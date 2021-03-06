@@ -1,5 +1,14 @@
-<?php 
-$this->extend('/layout/homelayout');
-$this->assign('title', 'Home') 
+<?php
+$this->assign('title', 'Home')
 ?>
-<h1>Essa é a Home</h1>
+
+<div class="user-item-container">
+    <div class="user-item-content">
+        <h2>Nome</h2>
+        <ul>
+            <li>Email</li>
+            <li>Telefone</li>
+        </ul>
+        <a class="button-view" href="">Visualizar mais informações</a>
+    </div>
+</div>
