@@ -49,7 +49,6 @@ Router::defaultRouteClass(DashedRoute::class);
 Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
-
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
      * its action called 'display', and we pass a param to select the view file
@@ -79,6 +78,12 @@ Router::scope('/', function (RouteBuilder $routes) {
     //  * routes you want in your application.
     //  */
     // $routes->fallbacks(DashedRoute::class);
+});
+
+Router::scope('/usuarios', function (RouteBuilder $routes) {
+
+    $routes->connect('/', ['controller' => 'Usuarios', 'action' => 'index']);
+    
 });
 
 /**

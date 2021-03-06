@@ -20,9 +20,8 @@ class UsuariosController extends AppController
      */
     public function index()
     {
-        $usuarios = $this->paginate($this->Usuarios);
-
-        $this->set(compact('usuarios'));
+        $this->viewBuilder()->setLayout('homelayout');
+        $this->render('index');
     }
 
     /**
