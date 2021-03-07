@@ -10,22 +10,24 @@ $('.button-view').click(function(e) {
             if(data['status']) {
                 var result = data['result'][0]
                 var html = $('.result ul')[0]
-                console.log(html)
+                
+                let dataUsario = result['data_nascimento'].split('T');
+                dataUsario = dataUsario[0].split('-')
+                dataUsario = dataUsario[2] + '/' + dataUsario[1] + '/' + dataUsario[0];
                 const nome = document.createElement('li');
                 const cpf = document.createElement('li');
                 const data_nascimento = document.createElement('li');
                 const email = document.createElement('li');
                 const telefone = document.createElement('li');
-                const endereco = document.createElement('li');
                 const cidade = document.createElement('li');
                 const estado = document.createElement('li');
                 const bairro = document.createElement('li');
                 const numero = document.createElement('li');
-                nome.innerHTML = 'Nome do usuário :' + result['nome'];
-                cpf.innerHTML = 'CPF do usuário :' + result['cpf'];
-                email.innerHTML = 'E-mail do usuário :' + result['email'];
-                telefone.innerHTML = 'Telefone do usuário :' + result['telefone'];
-                data_nascimento.innerHTML = 'Data de nascimento :' + result['data_nascimento'];
+                nome.innerHTML = 'Nome do usuário : ' + result['nome'];
+                cpf.innerHTML = 'CPF do usuário : ' + result['cpf'];
+                email.innerHTML = 'E-mail do usuário : ' + result['email'];
+                telefone.innerHTML = 'Telefone do usuário : ' + result['telefone'];
+                data_nascimento.innerHTML = 'Data de nascimento : ' + dataUsario;
                 estado.innerHTML = 'Estado : ' + result['endereco']['estado'];
                 cidade.innerHTML = 'Cidade : ' + result['endereco']['cidade'];
                 bairro.innerHTML = 'Bairro : ' + result['endereco']['bairro'];

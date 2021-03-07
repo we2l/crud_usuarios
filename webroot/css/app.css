@@ -5,6 +5,10 @@
     text-decoration: none;
 }
 
+a:visited, a:link { 
+    color: #000000; 
+} 
+
 .container {
     max-width: 1250px;
     margin: 0 auto;
@@ -78,16 +82,33 @@ main .intro {
     margin-bottom: 8px;
 }
  
-.user-item-content .button-view {
+.user-item-content .buttons {
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: #0B0C0D;
-    color: #ffffff;
+    gap: 10px;
     font-size: 20px;
-    padding: 8px 0px;
+    padding: 10px 0px;
     margin-top: 10px;
-    border-radius: 0px 0px 15px 15px;
+    color: #000000;
+}
+
+.user-item-content .button-view {
+    background-color: #16A2B8;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user-item-content .button-edit {
+    background-color: #F2BB16;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.user-item-content .button-del {
+    background-color: #F23838;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .user-item-content .button-view:hover {

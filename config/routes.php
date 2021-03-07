@@ -51,6 +51,8 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Usuarios', 'action' => 'index']);
     $routes->connect('/usuarios', ['controller' => 'Usuarios', 'action' => 'add']);
     $routes->connect('/usuarios/*', ['controller' => 'Usuarios', 'action' => 'view']);
+    $routes->connect('/usuarios/edit/*', ['controller' => 'Usuarios', 'action' => 'edit']);
+    $routes->connect('/usuarios/del/*', ['controller' => 'Usuarios', 'action' => 'delete']);
 });
 
 Router::scope('/usuarios', function (RouteBuilder $routes) {

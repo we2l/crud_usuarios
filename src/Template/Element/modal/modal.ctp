@@ -12,10 +12,11 @@
 
                 </ul>
             </div>
-            <div class="buttons">
-                <a class="edit" href="">Editar Usuário</a>
+            <!-- <div class="buttons">
+                
+
                 <a class="del" href="">Excluir Usuário</a>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

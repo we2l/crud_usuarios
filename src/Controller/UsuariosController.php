@@ -138,6 +138,8 @@ class UsuariosController extends AppController
     public function edit($id = null)
     {   
 
+        $this->autoRender = false;
+        echo $id;
         // $usuario = $this->Usuarios->get($id, [
         //     'contain' => []
         // ]);
@@ -162,14 +164,16 @@ class UsuariosController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
-        $usuario = $this->Usuarios->get($id);
-        if ($this->Usuarios->delete($usuario)) {
-            $this->Flash->success(__('The usuario has been deleted.'));
-        } else {
-            $this->Flash->error(__('The usuario could not be deleted. Please, try again.'));
-        }
+        $this->autoRender = false;
+        echo $id;
+        // $this->request->allowMethod(['post', 'delete']);
+        // $usuario = $this->Usuarios->get($id);
+        // if ($this->Usuarios->delete($usuario)) {
+        //     $this->Flash->success(__('The usuario has been deleted.'));
+        // } else {
+        //     $this->Flash->error(__('The usuario could not be deleted. Please, try again.'));
+        // }
 
-        return $this->redirect(['action' => 'index']);
+        // return $this->redirect(['action' => 'index']);
     }
 }
