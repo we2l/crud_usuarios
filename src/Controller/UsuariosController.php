@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Form\UsuarioForm;
+use Cake\ORM\TableRegistry;
 
 /**
  * Usuarios Controller
@@ -20,8 +22,10 @@ class UsuariosController extends AppController
      */
     public function index()
     {
-        $this->viewBuilder()->setLayout('homelayout');
-        $this->render('index');
+        $this->viewBuilder()->setLayout('layout');
+        $usuarioForm = new UsuarioForm();
+        $this->set('usuarioForm', $usuarioForm);
+
     }
 
     /**
@@ -47,17 +51,51 @@ class UsuariosController extends AppController
      */
     public function add()
     {
-        $usuario = $this->Usuarios->newEntity();
-        if ($this->request->is('post')) {
-            $usuario = $this->Usuarios->patchEntity($usuario, $this->request->getData());
-            if ($this->Usuarios->save($usuario)) {
-                $this->Flash->success(__('The usuario has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+        $this->viewBuilder()->setLayout('layout');
+        $usuarioForm = new UsuarioForm();
+        
+        $data = $this->request->getData();
+        
+        if($this->request->is('post')) {
+            if($usuarioForm->execute($data)) {
+                
+                $tableUsuarios = TableRegistry::get('Usuarios');
+                
+                $usuarios = $tableUsuarios->newEntity();
+                $usuarios->nome = $data['nome'];
+                $usuarios->cpf = $data['cpf'];
+                $usuarios->email = $data['email'];
+                $usuarios->data_nascimento = $data['data_nascimento']['year'].'-'.$data['data_nascimento']['month'].'-'.$data['data_nascimento']['day'];
+                $usuarios->telefone = $data['telefone'];
+                
+                $save = $tableUsuarios->save($usuarios);
+                
+                if($save) {
+                    $this->Flash->success('Enviado com sucesso', [
+                        'key' => 'success'
+                    ]);
+                }
+                
+            } else {
+                $this->Flash->error('Ocorreu um erro ao enviar o formulário', [
+                    'key' => 'error'
+                ]);
             }
-            $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
         }
-        $this->set(compact('usuario'));
+
+        $this->set('usuarioForm', $usuarioForm);
+
+        // $usuario = $this->Usuarios->newEntity();
+        // if ($this->request->is('post')) {
+        //     $usuario = $this->Usuarios->patchEntity($usuario, $this->request->getData());
+        //     if ($this->Usuarios->save($usuario)) {
+        //         $this->Flash->success(__('The usuario has been saved.'));
+                
+        //         return $this->redirect(['controller' => 'Home', 'action' => 'index']);
+        //     }
+        //     $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
+        // }
+        // $this->set(compact('usuario'));
     }
 
     /**
@@ -68,7 +106,8 @@ class UsuariosController extends AppController
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function edit($id = null)
-    {
+    {   
+
         $usuario = $this->Usuarios->get($id, [
             'contain' => []
         ]);

@@ -13,18 +13,15 @@
     <header>
         <div class="container menu">
             <div class="logo">LOGO</div>
-            <a class="button-create">Cadastrar Usuário</a>
-            
-                <div class="search">
-                    <form action="">
-                        <input type="text" placeholder="Buscar">
-                    </form>
-                </div>
-            </div>
+            <!-- <a class="button-create">Cadastrar Usuário</a> -->
+            <?= $this->Html->link('Cadastrar Usuário', 
+                ['controller' => 'Usuarios', 'action' => 'add'],
+                ['class' => 'button-create']
+            ) ?>
         </div>
     </header>
     <main>
-        <h1>Listagem de usuários</h1>
+        <h1 class="title"><?= $this->fetch('h1') ?></h1>
         <div class="container intro">
             <?= $this->fetch('content') ?>
         </div>

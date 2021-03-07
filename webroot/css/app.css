@@ -10,6 +10,12 @@
     margin: 0 auto;
 }
 
+.flex {
+    display: flex;
+    width: 100%;
+}
+
+
 body {
     background-color: #F2F2F0;
 }
@@ -34,14 +40,6 @@ header {
     display: block;
     color: #ffffff;
     font-size: 20px;
-}
-
-.menu .search input {
-    width: 300px;
-    padding: 5px;
-    border-radius: 10px;
-    border: #242625;
-    outline: none;
 }
 
 main h1 {
@@ -87,6 +85,73 @@ main .intro {
     background-color: #1C76CC;
 }
 
+.form-container {
+    width: 100%;
+    text-align: center;
+    padding: 50px 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.container-form {
+    width: 100%;
+}
+
+.form-cadastro {
+    width: 100%;
+}
+
+.form-item {
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.form-item input {
+    width: 95%;
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #0B0C0D;
+}
+
+.form-item select {
+    width: 32%;
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #0B0C0D;
+    
+}
+
+.form-item input[type="submit"] {
+    width: 96%;
+    background-color: #0B0C0D;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.form-item input[type="submit"]:hover {
+    background-color: green;
+}
+
+.box-form input{
+    width: 90%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #0B0C0D;
+    outline: none;
+}
+
+.form-item label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
 footer {
     position: fixed;
     bottom: 0;
@@ -121,4 +186,17 @@ footer {
 
 .modal-content .close span {
     cursor: pointer;
+}
+
+.message {
+    padding: 5px;
+    color: #ffffff;
+}
+
+.error {
+    background-color: red;
+}
+
+.success {
+    background-color: green;
 }

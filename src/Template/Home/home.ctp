@@ -1,6 +1,9 @@
 <?php
-$this->assign('title', 'Home')
+$this->assign('title', 'Home');
+$this->assign('h1', 'Listagem de usuários');
 ?>
+
+
 
 <div class="user-item-container">
     <div class="user-item-content">

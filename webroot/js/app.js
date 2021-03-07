@@ -1,12 +1,12 @@
-function cadastrarUsuario() {
-    const button = document.querySelector('.button-create');
+// function cadastrarUsuario() {
+//     const button = document.querySelector('.button-create');
     
-    button.addEventListener('click', (e)=> {
-        e.preventDefault();
-        openModal();
-    })
+//     button.addEventListener('click', (e)=> {
+//         e.preventDefault();
+//         openModal();
+//     })
 
-}
+// }
 
 function visualizarUsuario() {
     const button = document.querySelectorAll('.button-view');
@@ -31,5 +31,5 @@ function openModal() {
     })
 }
 
-cadastrarUsuario()
+// cadastrarUsuario()
 visualizarUsuario()

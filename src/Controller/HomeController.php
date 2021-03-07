@@ -19,7 +19,7 @@ class HomeController extends AppController
      */
     public function index()
     {
-        $this->viewBuilder()->setLayout('homelayout');
+        $this->viewBuilder()->setLayout('layout');
 
         $this->render('home');
     }

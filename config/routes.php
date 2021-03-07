@@ -82,7 +82,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 
 Router::scope('/usuarios', function (RouteBuilder $routes) {
 
-    $routes->connect('/', ['controller' => 'Usuarios', 'action' => 'index']);
+    $routes->connect('/', ['controller' => 'Usuarios', 'action' => 'add']);
     
 });
 
