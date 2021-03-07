@@ -14,7 +14,7 @@ CREATE TABLE ENDERECOS(
     complemento varchar(30),
     cidade varchar(50) not null,
     estado varchar(50) not null,
-    id_usuario int  
+    id_usuario int unique 
 );
 
     ALTER TABLE ENDERECOS

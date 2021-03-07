@@ -37,7 +37,8 @@ class UsuariosTable extends Table
 
         $this->hasOne('Usuarios', [
             'foreignKey' => 'id_usuario',
-            'joinType' => 'INNER'
+            'joinType' => 'INNER',
+            'cascadeCallBacks' => true
         ]);
     }
 

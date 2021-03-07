@@ -23,7 +23,7 @@ class UsuariosController extends AppController
     public function index()
     {
         $this->viewBuilder()->setLayout('layout');
-        
+
         $this->render('index');
 
     }
@@ -60,7 +60,6 @@ class UsuariosController extends AppController
             if($usuarioForm->execute($data)) {
                 
                 $tableUsuarios = TableRegistry::get('Usuarios');
-                
                 $usuarios = $tableUsuarios->newEntity();
                 $usuarios->nome = $data['nome'];
                 $usuarios->cpf = $data['cpf'];
@@ -68,11 +67,26 @@ class UsuariosController extends AppController
                 $usuarios->data_nascimento = $data['data_nascimento']['year'].'-'.$data['data_nascimento']['month'].'-'.$data['data_nascimento']['day'];
                 $usuarios->telefone = $data['telefone'];
                 
-                $save = $tableUsuarios->save($usuarios);
                 
-                if($save) {
+                $saveUsuario = $tableUsuarios->save($usuarios);
+
+                $tableEnderecos = TableRegistry::get('Enderecos');
+                $enderecos = $tableEnderecos->newEntity();
+                $enderecos->cidade = $data['cidade'];
+                $enderecos->estado = $data['estado'];
+                $enderecos->id_usuario = $saveUsuario['idusuario'];
+                $enderecos->bairro = $data['bairro'];
+                $enderecos->numero = $data['numero'];
+
+                $saveEndereco = $tableEnderecos->save($enderecos);
+
+                if($saveUsuario && $saveEndereco) {
                     $this->Flash->success('Enviado com sucesso', [
                         'key' => 'success'
+                    ]);
+                } else {
+                    $this->Flash->error('Ocorreu um erro ao enviar o formulário', [
+                        'key' => 'error'
                     ]);
                 }
                 

@@ -71,4 +71,5 @@ class EnderecosTable extends Table
 
         return $validator;
     }
+
 }

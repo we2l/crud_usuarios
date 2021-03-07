@@ -21,7 +21,7 @@ class EnderecosController extends AppController
     public function index()
     {
         $enderecos = $this->paginate($this->Enderecos);
-
+        
         $this->set(compact('enderecos'));
     }
 
