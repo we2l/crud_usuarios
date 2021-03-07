@@ -49,20 +49,9 @@ class EnderecosTable extends Table
             ->allowEmpty('idendereco', 'create');
 
         $validator
-            ->scalar('rua')
-            ->maxLength('rua', 50)
-            ->requirePresence('rua', 'create')
-            ->notEmpty('rua');
-
-        $validator
             ->integer('numero')
             ->requirePresence('numero', 'create')
             ->notEmpty('numero');
-
-        $validator
-            ->scalar('complemento')
-            ->maxLength('complemento', 30)
-            ->allowEmpty('complemento');
 
         $validator
             ->scalar('cidade')

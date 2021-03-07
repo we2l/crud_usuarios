@@ -34,6 +34,11 @@ class UsuariosTable extends Table
         $this->setTable('usuarios');
         $this->setDisplayField('idusuario');
         $this->setPrimaryKey('idusuario');
+
+        $this->hasOne('Usuarios', [
+            'foreignKey' => 'id_usuario',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**

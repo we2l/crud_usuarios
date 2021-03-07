@@ -23,8 +23,8 @@ class UsuariosController extends AppController
     public function index()
     {
         $this->viewBuilder()->setLayout('layout');
-        $usuarioForm = new UsuarioForm();
-        $this->set('usuarioForm', $usuarioForm);
+        
+        $this->render('index');
 
     }
 
