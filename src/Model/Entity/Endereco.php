@@ -29,9 +29,9 @@ class Endereco extends Entity
     protected $_accessible = [
         'rua' => true,
         'numero' => true,
-        'complemento' => true,
         'cidade' => true,
         'estado' => true,
+        'bairro' => true,
         'id_usuario' => true
     ];
 }
