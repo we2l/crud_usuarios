@@ -24,7 +24,10 @@ class UsuariosController extends AppController
     {
         $this->viewBuilder()->setLayout('layout');
 
-        $this->render('index');
+        $tableUsuarios = TableRegistry::get('Usuarios');
+        $usuarios = $tableUsuarios->find('all')->toArray();
+
+        $this->set('usuarios', $usuarios);
 
     }
 
