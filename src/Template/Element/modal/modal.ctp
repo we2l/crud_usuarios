@@ -6,7 +6,16 @@
             </span>
         </div>
         <div class="content">
-            
+            <h2>Dados do usuário</h2>
+            <div class="result">
+                <ul>
+
+                </ul>
+            </div>
+            <div class="buttons">
+                <a class="edit" href="">Editar Usuário</a>
+                <a class="del" href="">Excluir Usuário</a>
+            </div>
         </div>
     </div>
 </div>

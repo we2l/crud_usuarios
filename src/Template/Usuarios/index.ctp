@@ -14,8 +14,9 @@ foreach($usuarios as $usuario):
     <div class="user-item-content">
         <h2><?= $usuario['nome'] ?></h2>
         <ul>
-            <li><?= $usuario['email'] ?></li>
-            <li><?= $usuario['telefone'] ?></li>
+            <li>Email : <?= $usuario['email'] ?></li>
+            <li>CPF : <?= $usuario['cpf'] ?></li>
+            <li>Telefone : <?= $usuario['telefone'] ?></li>
         </ul>
         <a class="button-view" id="<?= $usuario['idusuario'] ?>">Visualizar mais informações</a>
     </div>

@@ -32,6 +32,8 @@
 
     <?= $this->element('modal/modal') ?>
     
+    <?= $this->html->script('jquery/jquery.min.js') ?>
     <?= $this->html->script('app.js') ?>
+    <?= $this->html->script('ajax.js') ?>
 </body>
 </html>

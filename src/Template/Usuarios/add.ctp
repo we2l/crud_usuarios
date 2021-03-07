@@ -31,7 +31,8 @@ $this->assign('h1', 'Cadastro de usuários')
         </div>
 
         <div class="form-item">
-            <?= $this->Form->control('data_nascimento') ?>
+            <label>Data de nascimento</label>
+            <input type="date" name="data_nascimento">
         </div>
 
         <div class="box-form flex">

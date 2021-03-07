@@ -34,6 +34,8 @@ class EnderecosTable extends Table
         $this->setTable('enderecos');
         $this->setDisplayField('idendereco');
         $this->setPrimaryKey('idendereco');
+
+        
     }
 
     /**

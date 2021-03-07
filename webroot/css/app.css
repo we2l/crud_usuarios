@@ -63,6 +63,13 @@ main .intro {
     font-size: 18px;
 }
 
+.user-item-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
 .user-item-content h2 {
     margin-bottom: 15px;
 }
@@ -72,7 +79,9 @@ main .intro {
 }
  
 .user-item-content .button-view {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #0B0C0D;
     color: #ffffff;
     font-size: 20px;
@@ -187,6 +196,58 @@ footer {
 .modal-content .close span {
     cursor: pointer;
 }
+
+.modal-content .content {
+    max-width: 90%;
+    padding: 10px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal-content .content .result {
+    margin-top: 10px;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+}
+
+.modal-content .content .result li{
+    margin: 10px 0px;
+    font-weight: 500;
+    font-size: 19px;
+}
+
+.modal-content .content .buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+}
+
+.modal-content .content .buttons a {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.modal-content .content .buttons .del {
+    background-color: #F23545;
+    color: #000000;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.modal-content .content .buttons .edit {
+    background-color: #FADB2A;
+    color: #000000;
+    font-weight: bold;
+    font-size: 20px;
+} 
 
 .message {
     padding: 5px;

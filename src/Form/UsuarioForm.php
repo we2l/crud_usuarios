@@ -22,7 +22,6 @@ class UsuarioForm extends Form
         $schema->addField('nome', 'string');
         $schema->addField('email', 'string');
         $schema->addField('cpf', 'string');
-        $schema->addField('data_nascimento', 'date');
         $schema->addField('telefone', 'integer');
         $schema->addField('estado', 'string');
         $schema->addField('cidade', 'string');
@@ -51,9 +50,6 @@ class UsuarioForm extends Form
         $validator->scalar('cpf', 'Deve ser informado um cpf')
             ->maxLength('cpf', 14, 'Máximo de 14 caracteres')
             ->notEmpty('cpf', 'Campo cpf necessário');
-
-        $validator->date('data_nascimento', 'Deve ser informado uma data de nascimento')
-            ->notEmpty('data_nascimento', 'Campo data de nascimento necessário');
 
         $validator->scalar('telefone', 'Deve ser informado um telefone')
             ->notEmpty('telefone', 'Campo telefone necessário');

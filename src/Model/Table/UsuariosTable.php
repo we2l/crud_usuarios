@@ -35,7 +35,7 @@ class UsuariosTable extends Table
         $this->setDisplayField('idusuario');
         $this->setPrimaryKey('idusuario');
 
-        $this->hasOne('Usuarios', [
+        $this->hasOne('Enderecos', [
             'foreignKey' => 'id_usuario',
             'joinType' => 'INNER',
             'cascadeCallBacks' => true

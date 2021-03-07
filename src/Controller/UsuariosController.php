@@ -3,6 +3,8 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use App\Form\UsuarioForm;
+use Cake\I18n\Date;
+use Cake\I18n\Time;
 use Cake\ORM\TableRegistry;
 
 /**
@@ -39,12 +41,22 @@ class UsuariosController extends AppController
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
-    {
-        $usuario = $this->Usuarios->get($id, [
-            'contain' => []
-        ]);
-
-        $this->set('usuario', $usuario);
+    {   
+        
+        $this->autoRender = false;
+        $tableUsuarios = TableRegistry::get('Usuarios');
+        $usuarios = $tableUsuarios->find('all')->contain('Enderecos')->where(['idusuario' => $id])->toArray();
+        $result = [];
+        if($usuarios) {
+            $result['status'] = 'ok';
+            $result['result'] = $usuarios;
+            
+            return $this->response->withType('application/json')->withStringBody(json_encode($result,JSON_PRETTY_PRINT));
+        } else {
+            $result['status'] = 'error';
+            $result['result'] = '';
+            return $this->response->withType('application/json')->withStringBody(json_encode($result,JSON_PRETTY_PRINT));
+        }
     }
 
     /**
@@ -67,10 +79,11 @@ class UsuariosController extends AppController
                 $usuarios->nome = $data['nome'];
                 $usuarios->cpf = $data['cpf'];
                 $usuarios->email = $data['email'];
-                $usuarios->data_nascimento = $data['data_nascimento']['year'].'-'.$data['data_nascimento']['month'].'-'.$data['data_nascimento']['day'];
+                $usuarios->data_nascimento = $data['data_nascimento'];
                 $usuarios->telefone = $data['telefone'];
                 
-                
+                $usuarios->data_nascimento = $data['data_nascimento'];
+
                 $saveUsuario = $tableUsuarios->save($usuarios);
 
                 $tableEnderecos = TableRegistry::get('Enderecos');
@@ -125,19 +138,19 @@ class UsuariosController extends AppController
     public function edit($id = null)
     {   
 
-        $usuario = $this->Usuarios->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $usuario = $this->Usuarios->patchEntity($usuario, $this->request->getData());
-            if ($this->Usuarios->save($usuario)) {
-                $this->Flash->success(__('The usuario has been saved.'));
+        // $usuario = $this->Usuarios->get($id, [
+        //     'contain' => []
+        // ]);
+        // if ($this->request->is(['patch', 'post', 'put'])) {
+        //     $usuario = $this->Usuarios->patchEntity($usuario, $this->request->getData());
+        //     if ($this->Usuarios->save($usuario)) {
+        //         $this->Flash->success(__('The usuario has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
-        }
-        $this->set(compact('usuario'));
+        //         return $this->redirect(['action' => 'index']);
+        //     }
+        //     $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
+        // }
+        // $this->set(compact('usuario'));
     }
 
     /**

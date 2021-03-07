@@ -50,6 +50,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->connect('/', ['controller' => 'Usuarios', 'action' => 'index']);
     $routes->connect('/usuarios', ['controller' => 'Usuarios', 'action' => 'add']);
+    $routes->connect('/usuarios/*', ['controller' => 'Usuarios', 'action' => 'view']);
 });
 
 Router::scope('/usuarios', function (RouteBuilder $routes) {
