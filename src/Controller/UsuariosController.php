@@ -115,17 +115,6 @@ class UsuariosController extends AppController
 
         $this->set('usuarioForm', $usuarioForm);
 
-        // $usuario = $this->Usuarios->newEntity();
-        // if ($this->request->is('post')) {
-        //     $usuario = $this->Usuarios->patchEntity($usuario, $this->request->getData());
-        //     if ($this->Usuarios->save($usuario)) {
-        //         $this->Flash->success(__('The usuario has been saved.'));
-                
-        //         return $this->redirect(['controller' => 'Home', 'action' => 'index']);
-        //     }
-        //     $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
-        // }
-        // $this->set(compact('usuario'));
     }
 
     /**
@@ -138,8 +127,74 @@ class UsuariosController extends AppController
     public function edit($id = null)
     {   
 
-        $this->autoRender = false;
-        echo $id;
+        $this->viewBuilder()->setLayout('layout');
+
+        $usuarioForm = new UsuarioForm();
+        $requestUsuario = $this->request->getData();
+
+        $tableUsuarios = TableRegistry::getTableLocator()->get('Usuarios');
+        $usuarioEndereco = $tableUsuarios->get($id, ['contain' => ['Enderecos']]);
+        
+        if($this->request->is(['post', 'put', 'patch'])) {
+            if($usuarioForm->execute($requestUsuario)) {
+
+                $data = [
+                    'idusuario' => $id,
+                    'nome' => $requestUsuario['nome'],
+                    'cpf' => $requestUsuario['cpf'],
+                    'email' => $requestUsuario['email'],
+                    'data_nascimento' => $requestUsuario['data_nascimento'],
+                    'telefone' => $requestUsuario['telefone'],
+                    'endereco' => [
+                        'cidade' => $requestUsuario['cidade'],
+                        'estado' => $requestUsuario['estado'],
+                        'id_usuario' => $id,
+                        'bairro' => $requestUsuario['bairro'],
+                        'numero' => $requestUsuario['numero'],
+                    ]
+                ];
+        
+                
+                $usuarioEnderecoSave = $tableUsuarios->patchEntity($usuarioEndereco, $data, [
+                    'associated' => ['Enderecos']
+                ]);
+
+                $save = $this->Usuarios->save($usuarioEnderecoSave);
+                
+                if($save) {
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error('Ocorreu um erro ao editar o usuário! verifique se todos os campos estão preenchidos', [
+                        'key' => 'error'
+                    ]);
+                }
+            }
+            
+        }
+        $this->set('usuario', $usuarioEndereco);
+        $this->set('usuarioForm', $usuarioForm);
+
+        // $updateUsuario = $tableUsuarios->newEntity($data, [
+        //     'associated' => ['Enderecos']
+        // ]);
+        // $tableUsuarios->save($updateUsuario);
+        
+        // $usuarioEndereco->cidade = $requestUsuario['cidade'];
+
+        //     'associated' => ['Enderecos']
+        // ]);
+        
+            // debug($usuarioEndereco['endereco']['cidade']);
+        
+        // // $usuario = $tableUsuarios->find('all')->contain('Enderecos')->where(['idusuario' => $id])->toArray();
+
+        // $tableEnderecos = TableRegistry::getTableLocator('Enderecos')->get('Usuarios');
+        // // $updateUsuario = $t;
+        // // debug($data);
+        // // $endereco = $tableEnderecos->find('all')->where(['id_usuario' => $usuario[0]['idusuario'] ])->toArray();
+
+
+        // $this->set('updateUsuario', $updateUsuario);
         // $usuario = $this->Usuarios->get($id, [
         //     'contain' => []
         // ]);
@@ -152,7 +207,7 @@ class UsuariosController extends AppController
         //     }
         //     $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
         // }
-        // $this->set(compact('usuario'));
+        
     }
 
     /**
@@ -165,8 +220,7 @@ class UsuariosController extends AppController
     public function delete($id = null)
     {
         $this->autoRender = false;
-        echo $id;
-        // $this->request->allowMethod(['post', 'delete']);
+        // $this->request->allowMethod(['post']);
         // $usuario = $this->Usuarios->get($id);
         // if ($this->Usuarios->delete($usuario)) {
         //     $this->Flash->success(__('The usuario has been deleted.'));
@@ -175,5 +229,6 @@ class UsuariosController extends AppController
         // }
 
         // return $this->redirect(['action' => 'index']);
+        echo $id;
     }
 }

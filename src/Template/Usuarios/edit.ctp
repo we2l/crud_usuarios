@@ -4,30 +4,91 @@
  * @var \App\Model\Entity\Usuario $usuario
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $usuario->idusuario],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $usuario->idusuario)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="usuarios form large-9 medium-8 columns content">
-    <?= $this->Form->create($usuario) ?>
-    <fieldset>
-        <legend><?= __('Edit Usuario') ?></legend>
-        <?php
-            echo $this->Form->control('nome');
-            echo $this->Form->control('cpf');
-            echo $this->Form->control('data_nascimento');
-            echo $this->Form->control('email');
-            echo $this->Form->control('telefone');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+<div class="form-container">
+    <div><?= $this->Flash->render('success') ?></div>
+    <div><?= $this->Flash->render('error') ?></div>
+    <?= $this->Form->create($usuarioForm, ['type' => 'put']) ?>
+
+        <div class="box-form flex">
+            <div class="form-item">
+                <?= $this->Form->control('nome',[
+                    'value' => [
+                        'value' => $usuario['nome']
+                    ]
+                ]) ?>
+            </div>
+
+            <div class="form-item">
+                <?= $this->Form->control('cpf', [
+                    'value' => [
+                        'value' => $usuario['cpf']
+                    ]
+                ]) ?>
+            </div>
+        </div>
+
+        <div class="box-form flex">
+            <div class="form-item">
+                <?= $this->Form->control('email', [
+                    'value' => [
+                        'value' => $usuario['email']
+                    ]
+                ]) ?>
+            </div>
+
+            <div class="form-item">
+                <?= $this->Form->control('telefone', [
+                    'value' => [
+                        'value' => $usuario['telefone']
+                    ]
+                ]) ?>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label>Data de nascimento</label>
+            <input type="date" name="data_nascimento" required >
+        </div>
+
+        <div class="box-form flex">
+            <div class="form-item">
+                <?= $this->Form->control('cidade', [
+                    'value' => [
+                        'value' => $usuario['endereco']['cidade']
+                    ]
+                ]) ?>
+            </div>
+
+            <div class="form-item">
+                <?= $this->Form->control('estado', [
+                    'value' => [
+                        'value' => $usuario['endereco']['estado']
+                    ]
+                ]) ?>
+            </div>
+        </div>
+
+        <div class="box-form flex">
+            <div class="form-item">
+                <?= $this->Form->control('bairro', [
+                    'value' => [
+                        'value' => $usuario['endereco']['bairro']
+                    ]
+                ]) ?>
+            </div>
+
+            <div class="form-item">
+                <?= $this->Form->control('numero', [
+                    'value' => [
+                        'value' =>  $usuario['endereco']['numero']
+                    ]
+                ]) ?>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <?= $this->Form->submit('Editar') ?>
+        </div>
+
     <?= $this->Form->end() ?>
 </div>

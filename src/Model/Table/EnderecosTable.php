@@ -67,6 +67,11 @@ class EnderecosTable extends Table
             ->requirePresence('estado', 'create')
             ->notEmpty('estado');
 
+            $validator
+            ->scalar('numero')
+            ->requirePresence('numero', 'create')
+            ->notEmpty('numero');
+
         $validator
             ->integer('id_usuario')
             ->allowEmpty('id_usuario');
