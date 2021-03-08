@@ -55,12 +55,6 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/usuarios/del/*', ['controller' => 'Usuarios', 'action' => 'delete']);
 });
 
-Router::scope('/usuarios', function (RouteBuilder $routes) {
-
-    
-    
-});
-
 /**
  * Load all plugin routes. See the Plugin documentation on
  * how to customize the loading of plugin routes.
