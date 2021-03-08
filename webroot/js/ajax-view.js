@@ -41,19 +41,6 @@ $('.button-view').click(function(e) {
                 html.appendChild(cidade)
                 html.appendChild(bairro)
                 html.appendChild(numero)
-                // for(let i in result) {
-                //     const li = document.createElement('li');
-                //     const text = document.createTextNode(i + ' - ' + result[i])
-                //     console.log(i)  
-                //     li.append(text);
-                //     if(result[i] == result['endereco']) {
-                //         for(let t in result['endereco']) {
-                //             console.log(result['endereco'][t])
-                //         }
-                //     }
-                    
-                //     html.appendChild(li)
-                // }
 
                 const button = $('.modal-content .close span')
                 $(button).click((e) => {

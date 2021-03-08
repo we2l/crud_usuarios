@@ -12,7 +12,10 @@
 
                 </ul>
             </div>
-
+            <div class="buttons-modal">
+                <a href="">Excluir</a>
+                <a href="">Edtiar</a>
+            </div>
         </div>
     </div>
 </div>

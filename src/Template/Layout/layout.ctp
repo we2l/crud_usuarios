@@ -34,6 +34,7 @@
     
     <?= $this->html->script('jquery/jquery.min.js') ?>
     <?= $this->html->script('app.js') ?>
-    <?= $this->html->script('ajax.js') ?>
+    <?= $this->html->script('ajax-del.js') ?>
+    <?= $this->html->script('ajax-view.js') ?>
 </body>
 </html>

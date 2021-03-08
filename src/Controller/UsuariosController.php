@@ -26,11 +26,13 @@ class UsuariosController extends AppController
     {
         $this->viewBuilder()->setLayout('layout');
 
+        $usuarioForm = new UsuarioForm();
+
         $tableUsuarios = TableRegistry::get('Usuarios');
         $usuarios = $tableUsuarios->find('all')->toArray();
 
         $this->set('usuarios', $usuarios);
-
+        $this->set('usuarioForm', $usuarioForm);
     }
 
     /**
@@ -219,16 +221,19 @@ class UsuariosController extends AppController
      */
     public function delete($id = null)
     {
+        
         $this->autoRender = false;
-        // $this->request->allowMethod(['post']);
-        // $usuario = $this->Usuarios->get($id);
-        // if ($this->Usuarios->delete($usuario)) {
-        //     $this->Flash->success(__('The usuario has been deleted.'));
-        // } else {
-        //     $this->Flash->error(__('The usuario could not be deleted. Please, try again.'));
-        // }
-
-        // return $this->redirect(['action' => 'index']);
-        echo $id;
+        $this->request->allowMethod(['get','delete']);
+        if($this->request->is(['get','post', 'delete'])) {
+            $usuario = $this->Usuarios->get($id);
+            $result = [];
+            if ($this->Usuarios->delete($usuario)) {
+                $result['status'] = ['success'];
+            } else {
+                $result['status'] = ['error'];
+            }
+            return $this->response->withType('application/json')->withStringBody(json_encode($result,JSON_PRETTY_PRINT));
+        }
+       
     }
 }

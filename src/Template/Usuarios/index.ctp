@@ -10,7 +10,7 @@ if(empty($usuarios)) {
 }
 foreach($usuarios as $usuario): 
 ?>
-<div class="user-item-container">
+<div class="user-item-container" id="<?= $usuario['idusuario'] ?>" >
     <div class="user-item-content">
         <h2><?= $usuario['nome'] ?></h2>
         <ul>
@@ -26,12 +26,7 @@ foreach($usuarios as $usuario):
                 ['controller' => 'Usuarios', 'action' => 'edit', $usuario['idusuario']],
                 ['class' => 'button-edit'])
             ?>
-
-            <?= 
-                $this->Html->link('Excluir', 
-                ['controller' => 'Usuarios', 'action' => 'delete', $usuario['idusuario']],
-                ['class' => 'button-del'])
-            ?>
+            <a class="button-del"  id="<?= $usuario['idusuario'] ?>">Excluir </a>
         </div>
     </div>
 </div>
