@@ -38,7 +38,11 @@ O core do sistema back end foi utilizando o framework php CakePhp, entre as dema
 
     # Clonar o repositório
     $ git clone https://github.com/we2l/crud_usuarios.git
+    
+    # Rode o comando
+    $ composer update 
 
+    Vá até a pasta config e renomeie a pasta app.default.php para app.php e configure compatível com seu banco de dados.
 ```
 ---
 Desenvolvido por Weslley Araujo 
