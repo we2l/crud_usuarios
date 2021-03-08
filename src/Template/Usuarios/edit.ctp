@@ -3,6 +3,8 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Usuario $usuario
  */
+$this->assign('title', 'Edição de usuários');
+$this->assign('h1', 'Edição de usuários');
 ?>
 <div class="form-container">
     <div><?= $this->Flash->render('success') ?></div>

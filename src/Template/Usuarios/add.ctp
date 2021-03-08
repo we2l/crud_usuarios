@@ -32,7 +32,7 @@ $this->assign('h1', 'Cadastro de usuários')
 
         <div class="form-item">
             <label>Data de nascimento</label>
-            <input type="date" name="data_nascimento">
+            <input type="date" name="data_nascimento" required>
         </div>
 
         <div class="box-form flex">

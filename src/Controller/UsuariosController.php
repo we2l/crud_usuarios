@@ -3,8 +3,6 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use App\Form\UsuarioForm;
-use Cake\I18n\Date;
-use Cake\I18n\Time;
 use Cake\ORM\TableRegistry;
 
 /**
@@ -25,6 +23,8 @@ class UsuariosController extends AppController
     public function index()
     {
         $this->viewBuilder()->setLayout('layout');
+
+    
 
         $usuarioForm = new UsuarioForm();
 
@@ -83,9 +83,9 @@ class UsuariosController extends AppController
                 $usuarios->email = $data['email'];
                 $usuarios->data_nascimento = $data['data_nascimento'];
                 $usuarios->telefone = $data['telefone'];
-                
                 $usuarios->data_nascimento = $data['data_nascimento'];
-
+                
+                
                 $saveUsuario = $tableUsuarios->save($usuarios);
 
                 $tableEnderecos = TableRegistry::get('Enderecos');
@@ -95,13 +95,11 @@ class UsuariosController extends AppController
                 $enderecos->id_usuario = $saveUsuario['idusuario'];
                 $enderecos->bairro = $data['bairro'];
                 $enderecos->numero = $data['numero'];
-
+                
                 $saveEndereco = $tableEnderecos->save($enderecos);
 
                 if($saveUsuario && $saveEndereco) {
-                    $this->Flash->success('Enviado com sucesso', [
-                        'key' => 'success'
-                    ]);
+                    return $this->redirect(['action' => 'index']);
                 } else {
                     $this->Flash->error('Ocorreu um erro ao enviar o formulário', [
                         'key' => 'error'
@@ -155,8 +153,7 @@ class UsuariosController extends AppController
                         'numero' => $requestUsuario['numero'],
                     ]
                 ];
-        
-                
+               
                 $usuarioEnderecoSave = $tableUsuarios->patchEntity($usuarioEndereco, $data, [
                     'associated' => ['Enderecos']
                 ]);
@@ -175,40 +172,6 @@ class UsuariosController extends AppController
         }
         $this->set('usuario', $usuarioEndereco);
         $this->set('usuarioForm', $usuarioForm);
-
-        // $updateUsuario = $tableUsuarios->newEntity($data, [
-        //     'associated' => ['Enderecos']
-        // ]);
-        // $tableUsuarios->save($updateUsuario);
-        
-        // $usuarioEndereco->cidade = $requestUsuario['cidade'];
-
-        //     'associated' => ['Enderecos']
-        // ]);
-        
-            // debug($usuarioEndereco['endereco']['cidade']);
-        
-        // // $usuario = $tableUsuarios->find('all')->contain('Enderecos')->where(['idusuario' => $id])->toArray();
-
-        // $tableEnderecos = TableRegistry::getTableLocator('Enderecos')->get('Usuarios');
-        // // $updateUsuario = $t;
-        // // debug($data);
-        // // $endereco = $tableEnderecos->find('all')->where(['id_usuario' => $usuario[0]['idusuario'] ])->toArray();
-
-
-        // $this->set('updateUsuario', $updateUsuario);
-        // $usuario = $this->Usuarios->get($id, [
-        //     'contain' => []
-        // ]);
-        // if ($this->request->is(['patch', 'post', 'put'])) {
-        //     $usuario = $this->Usuarios->patchEntity($usuario, $this->request->getData());
-        //     if ($this->Usuarios->save($usuario)) {
-        //         $this->Flash->success(__('The usuario has been saved.'));
-
-        //         return $this->redirect(['action' => 'index']);
-        //     }
-        //     $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
-        // }
         
     }
 
@@ -221,7 +184,7 @@ class UsuariosController extends AppController
      */
     public function delete($id = null)
     {
-        
+
         $this->autoRender = false;
         $this->request->allowMethod(['get','delete']);
         if($this->request->is(['get','post', 'delete'])) {

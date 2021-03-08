@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <?= $this->Html->css('app.css') ?>
     <title>CRUD Usuários - <?= $this->fetch('title') ?></title>
     
@@ -12,7 +14,7 @@
 <body>
     <header>
         <div class="container menu">
-            <div class="logo">LOGO</div>
+            <div class="logo">C . R . U . D </div>
             <!-- <a class="button-create">Cadastrar Usuário</a> -->
             <?= $this->Html->link('Cadastrar Usuário', 
                 ['controller' => 'Usuarios', 'action' => 'add'],
@@ -24,6 +26,7 @@
         <h1 class="title"><?= $this->fetch('h1') ?></h1>
         <div class="container intro">
             <?= $this->fetch('content') ?>
+            
         </div>
     </main>
     <footer>
