@@ -42,7 +42,7 @@ O core do sistema back end foi utilizando o framework php CakePhp, entre as dema
     # Rode o comando
     $ composer update 
 
-    Vá até a pasta config e renomeie a pasta app.default.php para app.php e configure compatível com seu banco de dados.
+    Vá até a pasta config e renomeie o arquivo app.default.php para app.php e configure compatível com seu banco de dados.
 ```
 ---
 Desenvolvido por Weslley Araujo 
