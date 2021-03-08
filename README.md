@@ -1,51 +1,43 @@
-# CakePHP Application Skeleton
+<h1 align='center' >  Crud CakePHP3 </h1> 
 
-[![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
-[![Total Downloads](https://img.shields.io/packagist/dt/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
+<br>
 
-A skeleton for creating applications with [CakePHP](https://cakephp.org) 3.x.
+# 📃 Sobre
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+Projeto de um crud de usuários ( Create, Read, Update, Delete ) utilizando o framework CakePHP 3.6.
 
-## Installation
+Neste sistema é possível: 
+- Cadastrar novos usuários,
+- Editar usuários existentes,
+- Além de deleter um usuário específico. 
+***
+<br>
 
-1. Download [Composer](https://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
+## ✅ Tecnologias Utilizadas
 
-If Composer is installed globally, run
+
+O core do sistema back end foi utilizando o framework php CakePhp, entre as demais tecnologias: 
+
+- PHP : é a linguagem que roda por baixo dos panos do framework
+
+- JS : Através do Javascript é feita a requisição ajax para excluir e visualizar um usuário específico em tempo real sem precisar atualizar a página.
+
+- Mysql : Foram criadas duas tabelas, uma para endereços e outra para usuários. A preferência de criar duas tabelas é para seguir as boas práticas seguindo a primeira forma normal. 
+
+- HTML : Linguagem básica da web utilizada na construção das páginas.
+
+- CSS : Linguagem de estilo que da o visual da página.
+***
+<br>
+## 📦 Como baixar o Projeto
+
+<br>
 
 ```bash
-composer create-project --prefer-dist cakephp/app
+
+    # Clonar o repositório
+    $ git clone https://github.com/we2l/crud_usuarios.git
+
 ```
-
-In case you want to use a custom app dir name (e.g. `/myapp/`):
-
-```bash
-composer create-project --prefer-dist cakephp/app myapp
-```
-
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
-
-```bash
-bin/cake server -p 8765
-```
-
-Then visit `http://localhost:8765` to see the welcome page.
-
-## Update
-
-Since this skeleton is a starting point for your application and various files
-would have been modified as per your needs, there isn't a way to provide
-automated upgrades, so you have to do any updates manually.
-
-## Configuration
-
-Read and edit `config/app.php` and setup the `'Datasources'` and any other
-configuration relevant for your application.
-
-## Layout
-
-The app skeleton uses a subset of [Foundation](http://foundation.zurb.com/) (v5) CSS
-framework by default. You can, however, replace it with any other library or
-custom styles.
+---
+Desenvolvido por Weslley Araujo 

@@ -24,8 +24,6 @@ class UsuariosController extends AppController
     {
         $this->viewBuilder()->setLayout('layout');
 
-    
-
         $usuarioForm = new UsuarioForm();
 
         $tableUsuarios = TableRegistry::get('Usuarios');
@@ -76,6 +74,7 @@ class UsuariosController extends AppController
         if($this->request->is('post')) {
             if($usuarioForm->execute($data)) {
                 
+                
                 $tableUsuarios = TableRegistry::get('Usuarios');
                 $usuarios = $tableUsuarios->newEntity();
                 $usuarios->nome = $data['nome'];
@@ -83,8 +82,6 @@ class UsuariosController extends AppController
                 $usuarios->email = $data['email'];
                 $usuarios->data_nascimento = $data['data_nascimento'];
                 $usuarios->telefone = $data['telefone'];
-                $usuarios->data_nascimento = $data['data_nascimento'];
-                
                 
                 $saveUsuario = $tableUsuarios->save($usuarios);
 
@@ -92,6 +89,12 @@ class UsuariosController extends AppController
                 $enderecos = $tableEnderecos->newEntity();
                 $enderecos->cidade = $data['cidade'];
                 $enderecos->estado = $data['estado'];
+                if(!$saveUsuario['idusuario']) {
+                    $this->Flash->error('Este e-mail já existe', [
+                        'key' => 'error'
+                    ]);
+                    
+                }
                 $enderecos->id_usuario = $saveUsuario['idusuario'];
                 $enderecos->bairro = $data['bairro'];
                 $enderecos->numero = $data['numero'];

@@ -37,7 +37,7 @@ header {
     padding: 15px 0px;
 }
 
-.menu .logo {
+.menu .logo  a{
     font-size: 32px;
 }
 
@@ -79,6 +79,7 @@ main .intro {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    overflow-wrap: break-word;
 }
 
 .user-item-content h2 {
@@ -97,6 +98,7 @@ main .intro {
     padding: 10px 0px;
     margin-top: 10px;
     color: #ffffff;
+    overflow-wrap: anywhere;
 }
 
 .user-item-content .button-view {

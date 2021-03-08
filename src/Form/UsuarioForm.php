@@ -22,7 +22,7 @@ class UsuarioForm extends Form
         $schema->addField('nome', 'string');
         $schema->addField('email', 'string');
         $schema->addField('cpf', 'string');
-        $schema->addField('telefone', 'integer');
+        $schema->addField('telefone', 'string');
         $schema->addField('estado', 'string');
         $schema->addField('cidade', 'string');
         $schema->addField('bairro', 'string');
@@ -63,7 +63,7 @@ class UsuarioForm extends Form
             ->notEmpty('cidade', 'Campo cidade necessário');
 
         $validator->scalar('bairro', 'Deve ser informado uma bairro')
-            ->minLength('bairro', 4, 'Máximo de 3 caracteres')
+            ->minLength('bairro', 4, 'Mínimo de 4 caracteres')
             ->notEmpty('bairro', 'Campo bairro necessário');
 
         $validator->integer('numero', 'Deve ser informado um número')

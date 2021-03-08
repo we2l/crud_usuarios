@@ -12,21 +12,29 @@ $this->assign('h1', 'Cadastro de usuários')
 
         <div class="box-form flex">
             <div class="form-item">
-                <?= $this->Form->control('nome') ?>
+                <?= $this->Form->control('nome', [
+                    'id' => 'nome'
+                ]) ?>
             </div>
 
             <div class="form-item">
-                <?= $this->Form->control('cpf') ?>
+                <?= $this->Form->control('cpf', [
+                    'id' => 'cpf'
+                ]) ?>
             </div>
         </div>
 
         <div class="box-form flex">
             <div class="form-item">
-                <?= $this->Form->control('email') ?>
+                <?= $this->Form->control('email', [
+                    'id' => 'email'
+                ]) ?>
             </div>
 
             <div class="form-item">
-                <?= $this->Form->control('telefone') ?>
+                <?= $this->Form->control('telefone', [
+                    'id' => 'telefone'
+                ]) ?>
             </div>
         </div>
 
@@ -37,21 +45,30 @@ $this->assign('h1', 'Cadastro de usuários')
 
         <div class="box-form flex">
             <div class="form-item">
-                <?= $this->Form->control('cidade') ?>
+                <?= $this->Form->control('estado', [
+                    'id' => 'estado'
+                ]) ?>
+            </div>
+            
+            <div class="form-item">
+                <?= $this->Form->control('cidade', [
+                    'id' => 'cidade'
+                ]) ?>
             </div>
 
-            <div class="form-item">
-                <?= $this->Form->control('estado') ?>
-            </div>
         </div>
 
         <div class="box-form flex">
             <div class="form-item">
-                <?= $this->Form->control('bairro') ?>
+                <?= $this->Form->control('bairro', [
+                    'id' => 'bairro'
+                ]) ?>
             </div>
 
             <div class="form-item">
-                <?= $this->Form->control('numero') ?>
+                <?= $this->Form->control('numero', [
+                    'id' => 'numero'
+                ]) ?>
             </div>
         </div>
 
