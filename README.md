@@ -9,7 +9,7 @@ Projeto de um crud de usuários ( Create, Read, Update, Delete ) utilizando o fr
 Neste sistema é possível: 
 - Cadastrar novos usuários,
 - Editar usuários existentes,
-- Além de deleter um usuário específico. 
+- Além de deletar um usuário específico. 
 ***
 <br>
 
